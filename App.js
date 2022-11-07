@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  Pressable,
 } from "react-native";
 import React from "react";
 import { useFonts } from "expo-font";
@@ -25,8 +26,12 @@ const App = () => {
       </View>
 
       <View style={estilos.viewBotoes}>
-        <Button title="Buscar Filmes" />
-        <Button title="Favoritos" />
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Buscar filmes</Text>
+        </Pressable>
+        <Pressable style={estilos.botaoInicial}>
+          <Text style={estilos.textoBotao}>Favoritos</Text>
+        </Pressable>
       </View>
 
       <View style={estilos.viewRodape}>
@@ -66,6 +71,15 @@ const estilos = StyleSheet.create({
     justifyContent: "space-evenly",
     width: "80%",
     alignItems: "flex-start",
+  },
+  botaoInicial: {
+    borderStyle: "solid",
+    borderWidth: 2,
+    padding: 10,
+    backgroundColor: "#5451a6",
+  },
+  textoBotao: {
+    color: "white",
   },
   viewRodape: {
     flex: 1,
