@@ -1,11 +1,27 @@
-import { Button, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  Button,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+} from "react-native";
 import React from "react";
+import { useFonts } from "expo-font";
+import logo from "./assets/images/logo.png";
 
 const App = () => {
+  const [loaded] = useFonts({
+    monoton: require("./assets/fonts/Monoton-Regular.ttf"),
+  });
+  if (!loaded) {
+    return <Text> carregando... </Text>;
+  }
   return (
     <SafeAreaView style={estilos.container}>
       <View style={estilos.viewLogo}>
-        <Text>Megafirmes</Text>
+        <Image style={estilos.logo} source={logo} />
+        <Text style={estilos.tituloApp}>Megafirmes</Text>
       </View>
 
       <View style={estilos.viewBotoes}>
@@ -26,23 +42,28 @@ export default App;
 const estilos = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "yellow",
     justifyContent: "center",
     alignItems: "center",
   },
+  logo: {
+    width: 128,
+    height: 128,
+  },
   viewLogo: {
     flex: 3,
-    backgroundColor: "green",
     textAlign: "center",
     justifyContent: "flex-end",
     alignItems: "center",
-    width: "80%",
+  },
+  tituloApp: {
+    fontSize: 32,
+    color: "#141414",
+    fontFamily: "monoton",
   },
   viewBotoes: {
     flex: 2,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "orange",
     width: "80%",
     alignItems: "flex-start",
   },
@@ -51,7 +72,6 @@ const estilos = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-start",
-    backgroundColor: "red",
     width: "80%",
   },
 });
