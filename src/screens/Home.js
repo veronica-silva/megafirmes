@@ -19,37 +19,37 @@ const Home = () => {
     return <Text> carregando... </Text>;
   }
   return (
-    <SafeAreaView style={estilos.container}>
-      <View style={estilos.viewLogo}>
-        <Image style={estilos.logo} source={logo} />
-        <Text style={estilos.tituloApp}>Megafirmes</Text>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.viewLogo}>
+        <Image style={styles.logo} source={logo} />
+        <Text style={styles.tituloApp}>Megafirmes</Text>
       </View>
 
-      <View style={estilos.viewBotoes}>
-        <Pressable style={estilos.botaoInicial}>
-          <Text style={estilos.textoBotao}>
+      <View style={styles.viewBotoes}>
+        <Pressable style={styles.botaoInicial}>
+          <Text style={styles.textoBotao}>
             <Ionicons name="md-search" size={16} color="white" />
             Buscar filmes
           </Text>
         </Pressable>
-        <Pressable style={estilos.botaoInicial}>
-          <Text style={estilos.textoBotao}>
+        <Pressable style={styles.botaoInicial}>
+          <Text style={styles.textoBotao}>
             <Ionicons name="md-star" size={16} color="white" />
             Favoritos
           </Text>
         </Pressable>
       </View>
 
-      <View style={estilos.viewRodape}>
-        <Pressable style={estilos.botaoRodape}>
-          <Text style={estilos.textoBotao}>
+      <View style={styles.viewRodape}>
+        <Pressable style={styles.botaoRodape}>
+          <Text style={styles.textoBotao}>
             <Ionicons name="lock-closed" size={16} color="white" />
             Privacidade
           </Text>
         </Pressable>
 
-        <Pressable style={estilos.botaoRodape}>
-          <Text style={estilos.textoBotao}>
+        <Pressable style={styles.botaoRodape}>
+          <Text style={styles.textoBotao}>
             <Ionicons name="information-circle" size={16} color="white" />
             Sobre o App
           </Text>
@@ -61,7 +61,7 @@ const Home = () => {
 
 export default Home;
 
-const estilos = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
