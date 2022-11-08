@@ -10,7 +10,9 @@ import {
 import React from "react";
 import { useFonts } from "expo-font";
 import logo from "./assets/images/logo.png";
+import { Ionicons } from "@expo/vector-icons";
 
+const corPrimaria = "#5451a6";
 const App = () => {
   const [loaded] = useFonts({
     monoton: require("./assets/fonts/Monoton-Regular.ttf"),
@@ -27,16 +29,33 @@ const App = () => {
 
       <View style={estilos.viewBotoes}>
         <Pressable style={estilos.botaoInicial}>
-          <Text style={estilos.textoBotao}>Buscar filmes</Text>
+          <Text style={estilos.textoBotao}>
+            <Ionicons name="md-search" size={16} color="white" />
+            Buscar filmes
+          </Text>
         </Pressable>
         <Pressable style={estilos.botaoInicial}>
-          <Text style={estilos.textoBotao}>Favoritos</Text>
+          <Text style={estilos.textoBotao}>
+            <Ionicons name="md-star" size={16} color="white" />
+            Favoritos
+          </Text>
         </Pressable>
       </View>
 
       <View style={estilos.viewRodape}>
-        <Button title="Privacidade" />
-        <Button title="Sobre o App" />
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>
+            <Ionicons name="lock-closed" size={16} color="white" />
+            Privacidade
+          </Text>
+        </Pressable>
+
+        <Pressable style={estilos.botaoRodape}>
+          <Text style={estilos.textoBotao}>
+            <Ionicons name="information-circle" size={16} color="white" />
+            Sobre o App
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -76,16 +95,20 @@ const estilos = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 2,
     padding: 10,
-    backgroundColor: "#5451a6",
+    backgroundColor: corPrimaria,
   },
   textoBotao: {
     color: "white",
   },
   viewRodape: {
-    flex: 1,
+    flex: 0.5,
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "flex-start",
-    width: "80%",
+    alignItems: "center",
+    width: "100%",
+    backgroundColor: corPrimaria,
+  },
+  botaoRodape: {
+    padding: 16,
   },
 });
