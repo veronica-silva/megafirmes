@@ -11,7 +11,7 @@ import logo from "../../assets/images/logo.png";
 import { Ionicons } from "@expo/vector-icons";
 
 const corPrimaria = "#5451a6";
-const Home = () => {
+const Home = ({ navigation }) => {
   const [loaded] = useFonts({
     monoton: require("../../assets/fonts/Monoton-Regular.ttf"),
   });
@@ -26,13 +26,24 @@ const Home = () => {
       </View>
 
       <View style={styles.viewBotoes}>
-        <Pressable style={styles.botaoInicial}>
+        <Pressable
+          style={styles.botaoInicial}
+          onPress={() => {
+            navigation.navigate("FormBusca");
+          }}
+        >
           <Text style={styles.textoBotao}>
             <Ionicons name="md-search" size={16} color="white" />
             Buscar filmes
           </Text>
         </Pressable>
-        <Pressable style={styles.botaoInicial}>
+
+        <Pressable
+          style={styles.botaoInicial}
+          onPress={() => {
+            navigation.navigate("Favoritos");
+          }}
+        >
           <Text style={styles.textoBotao}>
             <Ionicons name="md-star" size={16} color="white" />
             Favoritos
@@ -41,14 +52,24 @@ const Home = () => {
       </View>
 
       <View style={styles.viewRodape}>
-        <Pressable style={styles.botaoRodape}>
+        <Pressable
+          style={styles.botaoRodape}
+          onPress={() => {
+            navigation.navigate("Privacidade");
+          }}
+        >
           <Text style={styles.textoBotao}>
             <Ionicons name="lock-closed" size={16} color="white" />
             Privacidade
           </Text>
         </Pressable>
 
-        <Pressable style={styles.botaoRodape}>
+        <Pressable
+          style={styles.botaoRodape}
+          onPress={() => {
+            navigation.navigate("Sobre");
+          }}
+        >
           <Text style={styles.textoBotao}>
             <Ionicons name="information-circle" size={16} color="white" />
             Sobre o App
