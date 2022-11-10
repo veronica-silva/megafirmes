@@ -9,11 +9,10 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
+import Resultados from "./Resultados";
 
-const FormBusca = () => {
+const FormBusca = ({ navigation }) => {
   const [texto, setTexto] = useState("");
-
-  const [textoDigitado, setTextoDigitado] = useState("");
 
   const inputTexto = (valor) => {
     setTexto(valor);
@@ -27,6 +26,7 @@ const FormBusca = () => {
       return;
     }
     Alert.alert("Você procurou por: ", texto), [{ texto: "ok" }];
+    navigation.navigate("Resultados", { texto });
   };
 
   return (
@@ -56,7 +56,7 @@ export default FormBusca;
 
 const styles = StyleSheet.create({
   area: {
-    padding: 15,
+    padding: 16,
     marginVertical: 10,
   },
   text: {
