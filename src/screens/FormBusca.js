@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from "react";
-import Resultados from "./Resultados";
 
 const FormBusca = ({ navigation }) => {
   const [texto, setTexto] = useState("");

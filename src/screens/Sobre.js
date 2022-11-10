@@ -1,5 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { SafeAreaView, StyleSheet, Text, Image, View } from "react-native";
+import logoApi from "../../assets/images/logo-tmdb.png";
 const corPrimaria = "#5451a6";
 const Sobre = () => {
   return (
@@ -10,6 +10,9 @@ const Sobre = () => {
         permite a busca por informações sobre filmes existentes na base de dados
         pública disponibilizada pelo site The Movie Database (TMDb).
       </Text>
+      <View style={styles.imgView}>
+        <Image source={logoApi} style={styles.image} />
+      </View>
       <Text style={styles.texto}>
         Ao localizar um filme, o usuário visualiza informações como título, data
         de lançamento, nota média de avaliação e uma breve descrição sobre o
@@ -37,6 +40,17 @@ const styles = StyleSheet.create({
   },
   texto: {
     marginVertical: 8,
+  },
+  imgView: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 16,
+    paddingHorizontal: 16,
+  },
+  image: {
+    maxWidth: "90%",
+    resizeMode: "contain",
   },
   nomeApp: {
     color: corPrimaria,
