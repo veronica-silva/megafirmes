@@ -49,29 +49,28 @@ const Resultados = ({ route }) => {
       <Text style={styles.textResult}>{texto}</Text>
 
       {loading && <Loading />}
-      <ScrollView
-        style={styles.ScrollView}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-      >
-        {!loading && (
-          <View style={styles.viewFilmes}>
-            {resultados.map((resultado) => {
+
+      {!loading && (
+        <View style={styles.viewFilmes}>
+          <FlatList
+            data={resultados}
+            horizontal={true}
+            renderItem={({ item }) => {
               return (
-                <View key={resultado.id}>
+                <View key={item.id} style={styles.filme}>
                   <Image
                     style={styles.imagem}
                     source={{
-                      uri: `https://image.tmdb.org/t/p/original/${resultado.poster_path}`,
+                      uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
                     }}
                   />
-                  <Text style={styles.titulo}>{resultado.title}</Text>
+                  <Text style={styles.titulo}>{item.title}</Text>
                 </View>
               );
-            })}
-          </View>
-        )}
-      </ScrollView>
+            }}
+          ></FlatList>
+        </View>
+      )}
     </SafeAreaView>
   );
 };
@@ -87,23 +86,23 @@ const styles = StyleSheet.create({
   text: {
     padding: 2,
     justifyContent: "center",
-    fontSize: 18,
+    fontSize: 25,
     marginVertical: 5,
   },
   textResult: {
     padding: 2,
     justifyContent: "center",
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: "bold",
-    marginVertical: 5,
+    marginVertical: 10,
   },
   viewFilmes: {
     marginVertical: 8,
   },
-  titulo: { width: 100, textAlign: "center" },
+  titulo: { width: 300, textAlign: "center", fontSize: 25, marginVertical: 16 },
   imagem: {
-    height: 150,
-    width: 100,
+    height: 500,
+    width: 300,
   },
-  ScrollView: {},
+  filme: { marginHorizontal: 10 },
 });
