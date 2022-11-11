@@ -7,6 +7,8 @@ import {
   View,
   Image,
   ActivityIndicator,
+  FlatList,
+  ScrollView,
 } from "react-native";
 import api from "../services/api";
 import { apikey } from "../../apikey.js";
@@ -41,17 +43,35 @@ const Resultados = ({ route }) => {
     buscarFilmes();
   }, []);
 
-  if (loading) return <Loading />;
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Resultados da busca para: </Text>
       <Text style={styles.textResult}>{texto}</Text>
-      <View style={styles.viewFilmes}>
-        {resultados.map((resultado) => {
-          return <Text key={resultado.id}>{resultado.title}</Text>;
-        })}
-      </View>
+
+      {loading && <Loading />}
+      <ScrollView
+        style={styles.ScrollView}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
+        {!loading && (
+          <View style={styles.viewFilmes}>
+            {resultados.map((resultado) => {
+              return (
+                <View key={resultado.id}>
+                  <Image
+                    style={styles.imagem}
+                    source={{
+                      uri: `https://image.tmdb.org/t/p/original/${resultado.poster_path}`,
+                    }}
+                  />
+                  <Text style={styles.titulo}>{resultado.title}</Text>
+                </View>
+              );
+            })}
+          </View>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -80,4 +100,10 @@ const styles = StyleSheet.create({
   viewFilmes: {
     marginVertical: 8,
   },
+  titulo: { width: 100, textAlign: "center" },
+  imagem: {
+    height: 150,
+    width: 100,
+  },
+  ScrollView: {},
 });
