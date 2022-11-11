@@ -6,9 +6,12 @@ import {
   AppRegistry,
   View,
   Image,
+  ActivityIndicator,
 } from "react-native";
 import api from "../services/api";
 import { apikey } from "../../apikey.js";
+import Loading from "../components/Loading";
+
 const Resultados = ({ route }) => {
   const { texto } = route.params;
   const [resultados, setResultados] = useState([]);
@@ -30,7 +33,7 @@ const Resultados = ({ route }) => {
 
         setInterval(() => {
           setLoading(false);
-        }, 300);
+        }, 3000);
       } catch (error) {
         console.log("Deu ruim ao conectar na api: " + error.message);
       }
@@ -38,7 +41,7 @@ const Resultados = ({ route }) => {
     buscarFilmes();
   }, []);
 
-  if (loading) return <Text>Carregando aí...</Text>;
+  if (loading) return <Loading />;
 
   return (
     <SafeAreaView style={styles.container}>
