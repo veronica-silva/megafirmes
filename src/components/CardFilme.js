@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#5451a6",
     justifyContent: "space-between",
+    width: "48%",
+    alignContent: "center",
   },
   textBotao: {
     color: "#5451a6",
