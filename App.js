@@ -4,6 +4,7 @@ import Sobre from "./src/screens/Sobre.js";
 import FormBusca from "./src/screens/FormBusca";
 import Privacidade from "./src/screens/Privacidade.js";
 import Resultados from "./src/screens/Resultados.js";
+import Detalhes from "./src/screens/Detalhes.js";
 
 import { StyleSheet, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -36,6 +37,7 @@ const App = () => {
           <Stack.Screen component={Privacidade} name="Privacidade" />
           <Stack.Screen component={Sobre} name="Sobre" />
           <Stack.Screen component={Resultados} name="Resultados" />
+          <Stack.Screen component={Detalhes} name="Detalhes" />
         </Stack.Navigator>
       </NavigationContainer>
     </>
