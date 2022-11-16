@@ -13,6 +13,8 @@ import {
 import api from "../services/api";
 import { apikey } from "../../apikey.js";
 import Loading from "../components/Loading";
+import ItemSeparador from "../components/ItemSeparador";
+import CardFilme from "../components/CardFilme";
 
 const Resultados = ({ route }) => {
   const { texto } = route.params;
@@ -45,30 +47,28 @@ const Resultados = ({ route }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Resultados da busca para: </Text>
-      <Text style={styles.textResult}>{texto}</Text>
+      <View style={styles.alinha}>
+        <Text style={styles.text}>Resultados da busca para </Text>
+        <Text style={styles.textResult}>{texto}</Text>
+      </View>
 
       {loading && <Loading />}
 
       {!loading && (
         <View style={styles.viewFilmes}>
           <FlatList
+            ItemSeparatorComponent={ItemSeparador}
+            ListEmptyComponent={
+              <View>
+                <Text style={styles.semFilmes}>Não há filmes!</Text>
+              </View>
+            }
             data={resultados}
-            horizontal={true}
             renderItem={({ item }) => {
-              return (
-                <View key={item.id} style={styles.filme}>
-                  <Image
-                    style={styles.imagem}
-                    source={{
-                      uri: `https://image.tmdb.org/t/p/original/${item.poster_path}`,
-                    }}
-                  />
-                  <Text style={styles.titulo}>{item.title}</Text>
-                </View>
-              );
+              return <CardFilme filme={item} />;
             }}
-          ></FlatList>
+            keyExtractor={(item) => item.id}
+          />
         </View>
       )}
     </SafeAreaView>
@@ -84,17 +84,14 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   text: {
-    padding: 2,
     justifyContent: "center",
-    fontSize: 25,
-    marginVertical: 5,
+    fontSize: 16,
   },
   textResult: {
-    padding: 2,
     justifyContent: "center",
-    fontSize: 30,
+    fontSize: 16,
     fontWeight: "bold",
-    marginVertical: 10,
+    textTransform: "uppercase",
   },
   viewFilmes: {
     marginVertical: 8,
@@ -105,4 +102,17 @@ const styles = StyleSheet.create({
     width: 300,
   },
   filme: { marginHorizontal: 10 },
+
+  semFilmes: {
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginVertical: 60,
+  },
+  alinha: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 10,
+  },
 });
