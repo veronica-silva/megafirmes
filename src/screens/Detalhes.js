@@ -22,6 +22,16 @@ const Detalhes = ({ route }) => {
           <Text style={styles.titulo}>{filme.title}</Text>
         </ImageBackground>
       </View>
+      <View style={estilos.conteudo}>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text>
+            Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
+          </Text>
+          <Text style={estilos.descricao}>
+            {filme.overview || "Sem descrição"}
+          </Text>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
@@ -46,5 +56,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     backgroundColor: "#000000c0",
+  },
+  conteudo: {
+    flex: 1 /* necessário para o scrollview funcionar */,
+    padding: 16,
+  },
+  descricao: {
+    fontSize: 16,
+    lineHeight: 20,
+    marginVertical: 8,
   },
 });
