@@ -5,6 +5,7 @@ import {
   ImageBackground,
   View,
   Image,
+  ScrollView,
 } from "react-native";
 
 const Detalhes = ({ route }) => {
@@ -13,24 +14,27 @@ const Detalhes = ({ route }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.subContainer}>
-        <ImageBackground
-          style={styles.imagem}
-          source={{
-            uri: `https://image.tmdb.org/t/p/original/${filme.poster_path}`,
-          }}
-        >
-          <Text style={styles.titulo}>{filme.title}</Text>
-        </ImageBackground>
-      </View>
-      <View style={estilos.conteudo}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Text>
-            Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
-          </Text>
-          <Text style={estilos.descricao}>
-            {filme.overview || "Sem descrição"}
-          </Text>
-        </ScrollView>
+        <View style={styles.coluna1}>
+          <ImageBackground
+            style={styles.imagem}
+            source={{
+              uri: `https://image.tmdb.org/t/p/original/${filme.poster_path}`,
+            }}
+          >
+            <Text style={styles.titulo}>{filme.title}</Text>
+          </ImageBackground>
+        </View>
+
+        <View style={styles.conteudo}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Text>
+              Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
+            </Text>
+            <Text style={styles.descricao}>
+              {filme.overview || "Sem descrição"}
+            </Text>
+          </ScrollView>
+        </View>
       </View>
     </SafeAreaView>
   );
