@@ -13,10 +13,14 @@ const CardFilme = ({ filme }) => {
   };
   const salvar = async () => {
     const filmesFavoritos = await AsyncStorage.getItem("@favoritos");
-    console.log(filmesFavoritos);
-    return Alert.alert(
-      `O filme "${filme.title}" foi adicionado aos favoritos.`
-    );
+    let listaDeFilmes = JSON.parse(filmesFavoritos);
+    if (!listaDeFilmes) {
+      listaDeFilmes = [];
+    }
+    listaDeFilmes.push(filme);
+    await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
+    console.log(listaDeFilmes);
+    Alert.alert(`O filme "${filme.title}" foi adicionado aos favoritos.`);
   };
   return (
     <View style={styles.card}>
