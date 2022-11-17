@@ -95,7 +95,7 @@ const Privacidade = () => {
 export default Privacidade;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 8 },
+  container: { flex: 1, padding: 16, textAlign: "justify" },
   titulo: {
     fontWeight: "bold",
     fontSize: 18,

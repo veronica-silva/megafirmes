@@ -50,20 +50,24 @@ const styles = StyleSheet.create({
   subContainer: {
     padding: 8,
     flex: 1,
+    alignItems: "center",
   },
   imagem: {
-    height: 200,
-    width: 300,
+    height: 300,
+    width: 400,
   },
   titulo: {
     color: "white",
     fontWeight: "bold",
+    fontSize: 20,
+    lineHeight: 56,
     textAlign: "center",
-    backgroundColor: "#000000c0",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
+    marginTop: 200,
   },
   conteudo: {
     flex: 1 /* necessário para o scrollview funcionar */,
-    padding: 16,
+    padding: 8,
   },
   descricao: {
     fontSize: 16,

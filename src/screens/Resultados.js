@@ -11,7 +11,7 @@ import {
   ScrollView,
 } from "react-native";
 import api from "../services/api";
-import apikey from "../../apikey.js";
+import { apikey } from "../../apikey.js";
 import Loading from "../components/Loading";
 import ItemSeparador from "../components/ItemSeparador";
 import CardFilme from "../components/CardFilme";

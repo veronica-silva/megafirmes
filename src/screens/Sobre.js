@@ -3,7 +3,7 @@ import logoApi from "../../assets/images/logo-tmdb.png";
 const corPrimaria = "#5451a6";
 const Sobre = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.titulo}>Sobre o app MEGAFIRMES</Text>
       <Text style={styles.texto}>
         O <Text style={styles.nomeApp}>MEGAFIRMES</Text> é um aplicativo que
@@ -33,6 +33,9 @@ const Sobre = () => {
 export default Sobre;
 
 const styles = StyleSheet.create({
+  container: {
+    padding: 16,
+  },
   titulo: {
     fontWeight: "bold",
     fontSize: 18,
