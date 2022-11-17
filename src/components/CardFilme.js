@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const CardFilme = ({ filme }) => {
   const { title, poster_path } = filme;
@@ -9,6 +10,13 @@ const CardFilme = ({ filme }) => {
 
   const leiaMais = () => {
     navigation.navigate("Detalhes", { filme });
+  };
+  const salvar = async () => {
+    const filmesFavoritos = await AsyncStorage.getItem("@favoritos");
+    console.log(filmesFavoritos);
+    return Alert.alert(
+      `O filme "${filme.title}" foi adicionado aos favoritos.`
+    );
   };
   return (
     <View style={styles.card}>
@@ -31,7 +39,7 @@ const CardFilme = ({ filme }) => {
               Leia Mais
             </Text>
           </Pressable>
-          <Pressable style={styles.botao}>
+          <Pressable style={styles.botao} onPress={salvar}>
             <Text style={styles.textBotao}>
               <Ionicons size={16} color="#5451a6" name="save" />
               Salvar

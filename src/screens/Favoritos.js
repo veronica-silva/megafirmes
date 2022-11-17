@@ -1,9 +1,9 @@
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Favoritos = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text>Favoritos</Text>
     </SafeAreaView>
   );
