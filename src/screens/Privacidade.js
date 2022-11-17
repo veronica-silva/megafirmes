@@ -100,11 +100,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginVertical: 8,
+    textAlign: "center",
   },
   subtitulo: {
     fontWeight: "bold",
     fontSize: 16,
     marginVertical: 8,
+    textAlign: "center",
   },
   texto: {
     marginVertical: 8,

@@ -25,7 +25,7 @@ const Sobre = () => {
         dos usuários.
       </Text>
 
-      <Text style={styles.texto}>MEGAFIRMES &copy; 2022</Text>
+      <Text style={styles.textoCopy}>MEGAFIRMES &copy; 2022</Text>
     </SafeAreaView>
   );
 };
@@ -40,9 +40,15 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginVertical: 8,
+    textAlign: "center",
   },
   texto: {
-    marginVertical: 8,
+    marginVertical: 16,
+  },
+  textoCopy: {
+    marginVertical: 16,
+    textAlign: "center",
+    fontWeight: "bold",
   },
   imgView: {
     flex: 1,

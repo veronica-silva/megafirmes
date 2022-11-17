@@ -6,10 +6,13 @@ import {
   StyleSheet,
   Text,
   View,
+  Image,
+  ScrollView,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
+import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
 
 const Favoritos = () => {
   const [listaFavoritos, setListaFavoritos] = useState([]);
@@ -37,23 +40,37 @@ const Favoritos = () => {
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <View style={styles.container}>
-        <Text style={styles.quantidade}>
-          Quantidade: {listaFavoritos.length}
-        </Text>
-        <Button title="Excluir" onPress={excluir} />
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.quantidade}>
+            Você tem {listaFavoritos.length} favorito/s
+          </Text>
 
-        {listaFavoritos.map((filmeFavorito) => {
-          return (
-            <Pressable key={filmeFavorito.id} style={estilos.itemFilme}>
-              <Text> {filmeFavorito.title} </Text>
-              <Pressable style={estilos.botaoExcluir}>
-                <Ionicons name="trash" size={24} color="white" />
+          {listaFavoritos.map((filmeFavorito) => {
+            return (
+              <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
+                <Image
+                  style={styles.imagem}
+                  source={
+                    filmeFavorito.backdrop_path
+                      ? {
+                          uri: `https://image.tmdb.org/t/p/original/${filmeFavorito.poster_path}`,
+                        }
+                      : fundoAlternativo
+                  }
+                />
+                <Text> {filmeFavorito.title} </Text>
+
+                <Pressable style={styles.botaoExcluir}>
+                  <Ionicons name="trash" size={24} color="white" />
+                </Pressable>
               </Pressable>
-            </Pressable>
-          );
-        })}
-      </View>
+            );
+          })}
+
+          <Button title="Limpar favoritos" onPress={excluir} />
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -68,6 +85,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 8,
   },
+  quantidade: {
+    marginBottom: 16,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
   itemFilme: {
     padding: 8,
     flexDirection: "row",
@@ -81,5 +104,9 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     padding: 12,
     borderRadius: 4,
+  },
+  imagem: {
+    height: 80,
+    width: 60,
   },
 });
