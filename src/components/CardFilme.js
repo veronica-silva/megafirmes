@@ -19,7 +19,6 @@ const CardFilme = ({ filme }) => {
     }
     listaDeFilmes.push(filme);
     await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
-    console.log(listaDeFilmes);
     Alert.alert(`O filme "${filme.title}" foi adicionado aos favoritos.`);
   };
   return (
