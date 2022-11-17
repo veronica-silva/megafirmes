@@ -8,6 +8,8 @@ import {
   ScrollView,
 } from "react-native";
 
+import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
+
 const Detalhes = ({ route }) => {
   const { filme } = route.params;
   console.log(filme);
@@ -17,9 +19,13 @@ const Detalhes = ({ route }) => {
         <View style={styles.coluna1}>
           <ImageBackground
             style={styles.imagem}
-            source={{
-              uri: `https://image.tmdb.org/t/p/original/${filme.poster_path}`,
-            }}
+            source={
+              filme.backdrop_path
+                ? {
+                    uri: `https://image.tmdb.org/t/p/original/${filme.poster_path}`,
+                  }
+                : fundoAlternativo
+            }
           >
             <Text style={styles.titulo}>{filme.title}</Text>
           </ImageBackground>

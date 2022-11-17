@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
 
 const CardFilme = ({ filme }) => {
   const { title, poster_path } = filme;
@@ -15,7 +16,11 @@ const CardFilme = ({ filme }) => {
         <Text style={styles.titulo}>{title}</Text>
         <Image
           style={styles.imagem}
-          source={{ uri: `https://image.tmdb.org/t/p/original/${poster_path}` }}
+          source={
+            filme.backdrop_path
+              ? { uri: `https://image.tmdb.org/t/p/original/${poster_path}` }
+              : fundoAlternativo
+          }
         />
       </View>
       <View style={styles.corpo}>
