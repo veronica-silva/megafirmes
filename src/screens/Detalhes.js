@@ -7,8 +7,8 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-
 import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
+import { formataData } from "../utils/funcoes";
 
 const Detalhes = ({ route }) => {
   const { filme } = route.params;
@@ -34,7 +34,8 @@ const Detalhes = ({ route }) => {
         <View style={styles.conteudo}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Text>
-              Avaliação: {filme.vote_average} | Lançamento: {filme.release_date}
+              Avaliação: {filme.vote_average} | Lançamento:
+              {formataData(filme.release_date)}
             </Text>
             <Text style={styles.descricao}>
               {filme.overview || "Sem descrição"}
