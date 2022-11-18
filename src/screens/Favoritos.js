@@ -32,45 +32,55 @@ const Favoritos = () => {
     carregarFavoritos();
   }, []);
 
-  const excluir = async () => {
-    await AsyncStorage.clear("@favoritos");
+  const excluirTodos = async () => {
+    await AsyncStorage.removeItem("@favoritos");
+    setListaFavoritos([]);
+    Alert.alert("Favoritos", "Favoritos excluídos!");
+  };
+
+  const excluirUm = async () => {
+    await AsyncStorage.removeItem("@favoritos");
     setListaFavoritos([]);
     Alert.alert("Favoritos", "Favoritos excluídos!");
   };
 
   return (
     <SafeAreaView style={styles.safeContainer}>
-      <ScrollView>
-        <View style={styles.container}>
-          <Text style={styles.quantidade}>
-            Você tem {listaFavoritos.length} favorito/s
-          </Text>
+      <View style={styles.mainContainer}>
+        <ScrollView>
+          <View style={styles.container}>
+            <Text style={styles.quantidade}>
+              Você tem {listaFavoritos.length} favorito(s)
+            </Text>
 
-          {listaFavoritos.map((filmeFavorito) => {
-            return (
-              <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
-                <Image
-                  style={styles.imagem}
-                  source={
-                    filmeFavorito.backdrop_path
-                      ? {
-                          uri: `https://image.tmdb.org/t/p/original/${filmeFavorito.poster_path}`,
-                        }
-                      : fundoAlternativo
-                  }
-                />
-                <Text> {filmeFavorito.title} </Text>
+            {listaFavoritos.map((filmeFavorito) => {
+              return (
+                <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
+                  <Image
+                    style={styles.imagem}
+                    source={
+                      filmeFavorito.backdrop_path
+                        ? {
+                            uri: `https://image.tmdb.org/t/p/original/${filmeFavorito.poster_path}`,
+                          }
+                        : fundoAlternativo
+                    }
+                  />
+                  <Text style={styles.tituloFilme}>
+                    {" "}
+                    {filmeFavorito.title}{" "}
+                  </Text>
 
-                <Pressable style={styles.botaoExcluir}>
-                  <Ionicons name="trash" size={24} color="white" />
+                  <Pressable style={styles.botaoExcluir} onPress={excluirUm}>
+                    <Ionicons name="trash-outline" size={24} color="white" />
+                  </Pressable>
                 </Pressable>
-              </Pressable>
-            );
-          })}
-
-          <Button title="Limpar favoritos" onPress={excluir} />
-        </View>
-      </ScrollView>
+              );
+            })}
+          </View>
+        </ScrollView>
+        <Button title="Limpar favoritos" onPress={excluirTodos} />
+      </View>
     </SafeAreaView>
   );
 };
@@ -80,10 +90,10 @@ export default Favoritos;
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
+    padding: 8,
   },
   container: {
     flex: 1,
-    padding: 8,
   },
   quantidade: {
     marginBottom: 16,
@@ -99,13 +109,29 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 4,
     alignItems: "center",
+    borderColor: "#5451a6",
+    borderRadius: 4,
+    borderWidth: 1,
+    borderStyle: "dashed",
+  },
+  tituloFilme: {
+    flex: 1,
+    textAlign: "center",
+  },
+  mainContainer: {
+    padding: 8,
+    marginBottom: 20,
   },
   botaoExcluir: {
     backgroundColor: "red",
-    padding: 12,
+    padding: 8,
     borderRadius: 4,
   },
   imagem: {
+    borderColor: "#5451a6",
+    borderRadius: 4,
+    borderWidth: 2,
+    borderStyle: "dashed",
     height: 80,
     width: 60,
   },
