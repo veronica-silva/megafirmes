@@ -38,22 +38,19 @@ const Favoritos = () => {
     Alert.alert("Favoritos", "Favoritos excluídos!");
   };
 
-  const excluirUm = async () => {
-    await AsyncStorage.removeItem("@favoritos");
-    setListaFavoritos([]);
-    Alert.alert("Favoritos", "Favoritos excluídos!");
+  const excluirUm = (indice) => {
+    Alert.alert(`o filme de íncice ${indice} foi excluído`);
   };
 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.mainContainer}>
         <ScrollView>
+          <Text style={styles.quantidade}>
+            Você tem {listaFavoritos.length} favorito(s)
+          </Text>
           <View style={styles.container}>
-            <Text style={styles.quantidade}>
-              Você tem {listaFavoritos.length} favorito(s)
-            </Text>
-
-            {listaFavoritos.map((filmeFavorito) => {
+            {listaFavoritos.map((filmeFavorito, indice) => {
               return (
                 <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
                   <Image
@@ -68,10 +65,13 @@ const Favoritos = () => {
                   />
                   <Text style={styles.tituloFilme}>
                     {" "}
-                    {filmeFavorito.title}{" "}
+                    {filmeFavorito.title} {indice}
                   </Text>
 
-                  <Pressable style={styles.botaoExcluir} onPress={excluirUm}>
+                  <Pressable
+                    style={styles.botaoExcluir}
+                    onPress={() => excluirUm(indice)}
+                  >
                     <Ionicons name="trash-outline" size={24} color="white" />
                   </Pressable>
                 </Pressable>
@@ -79,7 +79,12 @@ const Favoritos = () => {
             })}
           </View>
         </ScrollView>
-        <Button title="Limpar favoritos" onPress={excluirTodos} />
+        <Pressable onPress={excluirTodos} style={styles.excluirTudo}>
+          <Text style={styles.excluirTudoTexto}>
+            <Ionicons name="trash-outline" size={24} color="red" /> Limpar
+            favoritos
+          </Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
@@ -109,10 +114,6 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     borderRadius: 4,
     alignItems: "center",
-    borderColor: "#5451a6",
-    borderRadius: 4,
-    borderWidth: 1,
-    borderStyle: "dashed",
   },
   tituloFilme: {
     flex: 1,
@@ -122,8 +123,22 @@ const styles = StyleSheet.create({
     padding: 8,
     marginBottom: 20,
   },
+  excluirTudo: {
+    backgroundColor: "white",
+    alignItems: "center",
+    borderColor: "red",
+    borderWidth: 2,
+    borderStyle: "dashed",
+  },
+  excluirTudoTexto: {
+    textAlign: "center",
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "red",
+    paddingVertical: 2,
+  },
   botaoExcluir: {
-    backgroundColor: "red",
+    backgroundColor: "rgba(255, 0, 0, 0.6)",
     padding: 8,
     borderRadius: 4,
   },

@@ -38,14 +38,15 @@ const CardFilme = ({ filme }) => {
         <View style={styles.botoes}>
           <Pressable style={styles.botao} onPress={leiaMais}>
             <Text style={styles.textBotao}>
-              <Ionicons size={16} color="#5451a6" name="book" />
-              Leia Mais
+              {" "}
+              <Ionicons size={16} color="#5451a6" name="book" /> Leia Mais
             </Text>
           </Pressable>
           <Pressable style={styles.botao} onPress={salvar}>
             <Text style={styles.textBotao}>
-              <Ionicons size={16} color="#5451a6" name="save" />
-              Salvar
+              {" "}
+              <Ionicons size={16} color="#5451a6" name="md-star-outline" />{" "}
+              Favoritar
             </Text>
           </Pressable>
         </View>

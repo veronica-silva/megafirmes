@@ -33,8 +33,7 @@ const Home = ({ navigation }) => {
           }}
         >
           <Text style={styles.textoBotao}>
-            <Ionicons name="md-search" size={16} color="white" />
-            Buscar filmes
+            <Ionicons name="md-search" size={16} color="white" /> Buscar filmes
           </Text>
         </Pressable>
 
@@ -45,8 +44,7 @@ const Home = ({ navigation }) => {
           }}
         >
           <Text style={styles.textoBotao}>
-            <Ionicons name="md-star" size={16} color="white" />
-            Favoritos
+            <Ionicons name="md-star" size={16} color="white" /> Favoritos
           </Text>
         </Pressable>
       </View>
@@ -59,8 +57,7 @@ const Home = ({ navigation }) => {
           }}
         >
           <Text style={styles.textoBotao}>
-            <Ionicons name="lock-closed" size={16} color="white" />
-            Privacidade
+            <Ionicons name="lock-closed" size={16} color="white" /> Privacidade
           </Text>
         </Pressable>
 
@@ -71,8 +68,8 @@ const Home = ({ navigation }) => {
           }}
         >
           <Text style={styles.textoBotao}>
-            <Ionicons name="information-circle" size={16} color="white" />
-            Sobre o App
+            <Ionicons name="information-circle" size={16} color="white" /> Sobre
+            o App
           </Text>
         </Pressable>
       </View>
