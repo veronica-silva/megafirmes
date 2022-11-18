@@ -8,6 +8,7 @@ import {
   View,
   Image,
   ScrollView,
+  Vibration,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
@@ -39,6 +40,7 @@ const Favoritos = () => {
   };
 
   const excluirTodos = async () => {
+    Vibration.vibrate();
     Alert.alert(
       "Excluir Todos?",
       "Ao clicar você removerá TODOS os favpritos",

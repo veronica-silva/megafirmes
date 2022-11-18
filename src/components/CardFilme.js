@@ -1,4 +1,12 @@
-import { StyleSheet, Text, View, Image, Pressable, Alert } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  Alert,
+  Vibration,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
@@ -20,6 +28,7 @@ const CardFilme = ({ filme }) => {
     for (let filmeExistente in listaDeFilmes) {
       if (listaDeFilmes[filmeExistente].id == filme.id) {
         Alert.alert("Já favoritado", "Esse filme já era um favorito");
+        Vibration.vibrate();
         return;
       }
     }
