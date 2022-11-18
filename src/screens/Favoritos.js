@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
   tituloFilme: {
     flex: 1,
     textAlign: "center",
+    padding: 2,
   },
   mainContainer: {
     padding: 8,
