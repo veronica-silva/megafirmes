@@ -13,9 +13,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import fundoAlternativo from "../../assets/images/fundoAlternativo.jpg";
+import { useNavigation } from "@react-navigation/native";
 
 const Favoritos = () => {
   const [listaFavoritos, setListaFavoritos] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function carregarFavoritos() {
@@ -32,9 +34,32 @@ const Favoritos = () => {
     carregarFavoritos();
   }, []);
 
+  const detalhes = (filmeSelecionado) => {
+    navigation.navigate("Detalhes", { filme: filmeSelecionado });
+  };
+
   const excluirTodos = async () => {
-    await AsyncStorage.removeItem("@favoritos");
-    setListaFavoritos([]);
+    Alert.alert(
+      "Excluir Todos?",
+      "Ao clicar você removerá TODOS os favpritos",
+      [
+        {
+          text: "cancelar",
+          onPress: () => {
+            return false;
+          },
+          style: "cancel",
+        },
+        {
+          text: "excluir mesmo assim",
+          onPress: async () => {
+            await AsyncStorage.removeItem("@favoritos");
+            setListaFavoritos([]);
+          },
+          style: "destructive",
+        },
+      ]
+    );
   };
 
   const excluirUm = async (indice) => {
@@ -57,7 +82,11 @@ const Favoritos = () => {
           <ScrollView style={styles.containerScroll}>
             {listaFavoritos.map((filmeFavorito, indice) => {
               return (
-                <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
+                <Pressable
+                  key={filmeFavorito.id}
+                  style={styles.itemFilme}
+                  onPress={detalhes.bind(this, filmeFavorito)}
+                >
                   <Image
                     style={styles.imagem}
                     source={
@@ -100,16 +129,16 @@ export default Favoritos;
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    paddingHorizontal: 8,
   },
   mainContainer: {
     flex: 1,
     marginVertical: 8,
+    paddingHorizontal: 8,
   },
 
   meio: { marginVertical: 8 },
 
-  rodape: { borderRadius: 4 },
+  rodape: { borderRadius: 4, paddingHorizontal: 8 },
 
   quantidade: {
     textAlign: "center",

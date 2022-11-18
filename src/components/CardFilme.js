@@ -17,6 +17,12 @@ const CardFilme = ({ filme }) => {
     if (!listaDeFilmes) {
       listaDeFilmes = [];
     }
+    for (let filmeExistente in listaDeFilmes) {
+      if (listaDeFilmes[filmeExistente].id == filme.id) {
+        Alert.alert("Já favoritado", "Esse filme já era um favorito");
+        return;
+      }
+    }
     listaDeFilmes.push(filme);
     await AsyncStorage.setItem("@favoritos", JSON.stringify(listaDeFilmes));
     Alert.alert(`O filme "${filme.title}" foi adicionado aos favoritos.`);

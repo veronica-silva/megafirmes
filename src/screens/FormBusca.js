@@ -24,7 +24,6 @@ const FormBusca = ({ navigation }) => {
       ]);
       return;
     }
-    Alert.alert("Você procurou por: ", texto), [{ texto: "ok" }];
     navigation.navigate("Resultados", { texto });
   };
 
