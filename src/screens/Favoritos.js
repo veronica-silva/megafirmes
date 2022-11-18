@@ -35,21 +35,26 @@ const Favoritos = () => {
   const excluirTodos = async () => {
     await AsyncStorage.removeItem("@favoritos");
     setListaFavoritos([]);
-    Alert.alert("Favoritos", "Favoritos excluídos!");
   };
 
-  const excluirUm = (indice) => {
-    Alert.alert(`o filme de íncice ${indice} foi excluído`);
+  const excluirUm = async (indice) => {
+    listaFavoritos.splice(indice, 1);
+    await AsyncStorage.setItem("@favoritos", JSON.stringify(listaFavoritos));
+    const listaDeFilmes = JSON.parse(await AsyncStorage.getItem("@favoritos"));
+    setListaFavoritos(listaDeFilmes);
   };
 
   return (
     <SafeAreaView style={styles.safeContainer}>
       <View style={styles.mainContainer}>
-        <ScrollView>
+        <View style={styles.cabecalho}>
           <Text style={styles.quantidade}>
             Você tem {listaFavoritos.length} favorito(s)
           </Text>
-          <View style={styles.container}>
+        </View>
+
+        <View style={styles.meio}>
+          <ScrollView style={styles.containerScroll}>
             {listaFavoritos.map((filmeFavorito, indice) => {
               return (
                 <Pressable key={filmeFavorito.id} style={styles.itemFilme}>
@@ -63,26 +68,26 @@ const Favoritos = () => {
                         : fundoAlternativo
                     }
                   />
-                  <Text style={styles.tituloFilme}>
-                    {" "}
-                    {filmeFavorito.title} {indice}
-                  </Text>
+                  <Text style={styles.tituloFilme}> {filmeFavorito.title}</Text>
 
                   <Pressable
                     style={styles.botaoExcluir}
-                    onPress={() => excluirUm(indice)}
+                    // onPress={() => excluirUm(indice)}
+                    onPress={excluirUm.bind(this, indice)}
                   >
                     <Ionicons name="trash-outline" size={24} color="white" />
                   </Pressable>
                 </Pressable>
               );
             })}
-          </View>
-        </ScrollView>
+          </ScrollView>
+        </View>
+      </View>
+      <View style={styles.rodape}>
         <Pressable onPress={excluirTodos} style={styles.excluirTudo}>
           <Text style={styles.excluirTudoTexto}>
-            <Ionicons name="trash-outline" size={24} color="red" /> Limpar
-            favoritos
+            <Ionicons name="trash-outline" size={24} color="red" /> Remover
+            todos
           </Text>
         </Pressable>
       </View>
@@ -95,13 +100,18 @@ export default Favoritos;
 const styles = StyleSheet.create({
   safeContainer: {
     flex: 1,
-    padding: 8,
+    paddingHorizontal: 8,
   },
-  container: {
+  mainContainer: {
     flex: 1,
+    marginVertical: 8,
   },
+
+  meio: { marginVertical: 8 },
+
+  rodape: { borderRadius: 4 },
+
   quantidade: {
-    marginBottom: 16,
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 16,
@@ -120,21 +130,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 2,
   },
-  mainContainer: {
-    padding: 8,
-    marginBottom: 20,
-  },
   excluirTudo: {
     backgroundColor: "white",
     alignItems: "center",
     borderColor: "red",
     borderWidth: 2,
-    borderStyle: "dashed",
+    borderRadius: 4,
   },
   excluirTudoTexto: {
     textAlign: "center",
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 24,
     color: "red",
     paddingVertical: 2,
   },
