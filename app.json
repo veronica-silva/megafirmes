@@ -12,9 +12,12 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/8e46f231-31c9-427b-bcaf-a225fc300064"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
@@ -22,7 +25,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-megafirmes.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.veronicasilva.megafirmes"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -32,6 +36,9 @@
         "projectId": "8e46f231-31c9-427b-bcaf-a225fc300064"
       }
     },
-    "owner": "veronica-silva"
+    "owner": "veronica-silva",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    }
   }
 }
