@@ -128,4 +128,4 @@ Estruturação do layout em Detalhes usando componente ImageBackground e diverso
 No App.js adicionamos options ao Stack.Scren de Detalhes para exibição de um botão de retorno à tela Home
 Atualizações de 17/11:
 Programação de exibição condicional de imagem alternativa para o caso de um filme não ter foto de fundo e de capa
-Formatação da data de lançamento do filme para exibição como dia/mês/ano
+Formatação da data de lançamento do filme para exibição como dia/mês/ano.
