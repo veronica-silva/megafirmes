@@ -8,7 +8,7 @@ Componentes usados: View, SafeAreaView, StyleSheet, Text, Button.
 
 Foram criados diversos objetos de estilização usando recursos Flex para layout.
 
-## branch 01-estilizacao-app
+## Branch 01-estilizacao-app
 Criação de mais objetivos para estilização de cada View na tela inicial do App.
 
 Importação de fonte externa usando a lib expo-fonts e o hook useFonts.
