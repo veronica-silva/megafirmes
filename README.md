@@ -19,7 +19,7 @@ O arquivo de fonte foi colocado em assets/fonts.
 
 Importação de arquivo de imagem (logo) usando import tradicional. O arquivo de fonte foi colocado em assets/fonts.
 
-## branch 02-estilizacao-app-customizados
+## Branch 02-estilizacao-app-customizados
 Substituição do Button pelo Pressable (componente genérico pressionável altamente customizável).
 
 Estilização dos novos "botões" (Pressables).
