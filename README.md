@@ -41,7 +41,7 @@ Adição de componente StatusBar do react-native no App. Obs.: Não use o Status
 
 Uso do componente ScrollView em Privacidade para suporte a rolagem de tela para conteúdos extensos.
 
-## branch 04-recursos-de-navegação
+## Branch 04-recursos-de-navegação
 Para gerenciar a navegação entre telas do nosso app, utilizamos um conjunto de diversas libs conhecidas como React Navigation.
 
 Site oficial e de documentação: https://reactnavigation.org/docs/getting-started/
